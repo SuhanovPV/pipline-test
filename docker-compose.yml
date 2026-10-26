@@ -1,0 +1,26 @@
+services:
+  identidock:
+    build: .
+    ports:
+    - "5000:5000"
+    environment:
+      ENV: DEV 
+    volumes:
+      - ./app:/app
+    networks:
+      - mynet
+
+  dnmonster: 
+    image: amouat/dnmonster
+    container_name: dnmonster
+    networks:
+      - mynet
+  
+  redis:
+    image: redis
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge

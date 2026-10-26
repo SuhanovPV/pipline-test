@@ -1,0 +1,24 @@
+services:
+  identidock:
+    build: .
+    expose:
+      - "9090"
+    environment:
+      ENV: PROD 
+    networks:
+      - mynet
+
+  dnmonster: 
+    image: amouat/dnmonster
+    container_name: dnmonster
+    networks:
+      - mynet
+  
+  redis:
+    image: redis
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
