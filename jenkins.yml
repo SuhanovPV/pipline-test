@@ -10,7 +10,6 @@ services:
 
   dnmonster: 
     image: amouat/dnmonster
-    container_name: dnmonster
     networks:
       - mynet
   
